@@ -25,6 +25,5 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
-      - name: просмотр содержимого
-        run: ls -la
-        run: cat app.js
+      - run: ls -la
+      - run: cat app.js
