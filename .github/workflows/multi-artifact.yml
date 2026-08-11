@@ -9,13 +9,14 @@ jobs:
     steps:
       - run: mkdir results
       - run: echo "отчет готов" > results/report.txt
-      - run: echo "coverage: 95" > results/coverage.json
+      - run: echo '{"coverage": 95}' > results/coverage.json
       - run: echo "логи чисты" > results/logs.txt
       - name: загрузка артефакта
         uses: actions/upload-artifact@v4
         with:
           name: results
           path: results
+
   check:
     runs-on: ubuntu-latest
     needs: generate
@@ -24,7 +25,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: results
+          path: results
       - name: просмотр содержимого
         run: cat results/report.txt results/coverage.json results/logs.txt
-      
+
         
