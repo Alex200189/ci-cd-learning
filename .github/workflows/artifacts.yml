@@ -1,0 +1,23 @@
+name: Artifacts Demo
+
+on: push
+
+jobs:
+  create-file:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Привет из первой джобы!" > hello.txt
+      - run: cat hello.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-file
+          path: hello.txt
+
+  read-file:
+    needs: create-file
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-file
+      - run: cat hello.txt
