@@ -1,4 +1,4 @@
-name: Артефакт с несколькими файлами
+name: Artifact Test
 
 on:
   push:
@@ -8,11 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: mkdir results
-      - run: echo "отчет готов" > results/report.txt
-      - run: echo '{"coverage": 95}' > results/coverage.json
-      - run: echo "логи чисты" > results/logs.txt
-      - name: загрузка артефакта
-        uses: actions/upload-artifact@v4
+      - run: echo отчет готов > results/report.txt
+      - run: echo coverage 95 > results/coverage.json
+      - run: echo логи чисты > results/logs.txt
+      - uses: actions/upload-artifact@v4
         with:
           name: results
           path: results
@@ -21,12 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: generate
     steps:
-      - name: скачиваем артефакт
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: results
           path: results
-      - name: просмотр содержимого
-        run: cat results/report.txt results/coverage.json results/logs.txt
+      - run: cat results/report.txt results/coverage.json results/logs.txt
+
 
         
