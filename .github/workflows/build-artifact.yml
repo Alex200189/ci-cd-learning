@@ -26,4 +26,5 @@ jobs:
         with:
           name: build
       - name: просмотр содержимого
-        run: cat dist/app.js
+        run: ls -la
+        run: cat app.js
