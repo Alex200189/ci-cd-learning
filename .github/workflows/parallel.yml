@@ -1,0 +1,23 @@
+name: Параллельные джобы без зависимостей
+
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "линтинг"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "тестирование"
+
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "проверка типов"
+
+
+    
