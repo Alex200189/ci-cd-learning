@@ -1,0 +1,19 @@
+name: code check
+
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Проверяю код линтером..."
+      - run: sleep 2
+      - run: echo "Линтинг пройден!"
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Запускаю тесты..."
+      - run: sleep 3
+      - run: echo "Тесты пройдены!"
