@@ -9,7 +9,7 @@ jobs:
     steps:
       - run: echo "Проверяю код линтером..."
       - run: sleep 2
-      - run: echo "Линтинг пройден!"
+      - run: exit 1
   test:
     needs: lint
     runs-on: ubuntu-latest
