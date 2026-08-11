@@ -1,0 +1,29 @@
+name: Передача билда через artifacts
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: создаем папку
+        run: mkdir dist
+      - name: создаем файл
+        run: echo "console.log('hello')" > dist/app.js
+      - name: загружаем папку dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: dist/
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: скачиваем артефакт
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+      - name: просмотр содержимого
+        run: cat dist/app.js
