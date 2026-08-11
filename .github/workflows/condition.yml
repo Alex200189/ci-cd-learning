@@ -1,0 +1,16 @@
+name: Пропуск джобы по условию
+
+on:
+  push:
+
+jobs:
+  always-run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "это джоба всегда выполняется"
+      
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - run: echo "деплой на продакшн"
