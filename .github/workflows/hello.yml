@@ -1,0 +1,10 @@
+name: Hello World
+
+on: push
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Я запустил свой первый пайплайн!"
+      - run: date
