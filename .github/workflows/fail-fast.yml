@@ -1,0 +1,28 @@
+name: Fail-fast
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: версия
+        run: node -v
+      
+      - name: упасть на 18
+        if: matrix.node-version == 18
+        run: exit 1
+      
+      - name: успех
+        run: echo "Всё хорошо на ${{ matrix.node-version }}"
