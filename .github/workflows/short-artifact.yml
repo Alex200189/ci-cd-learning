@@ -11,10 +11,10 @@ jobs:
         run: echo "date" > data.txt
       - name: загрузка файла
         uses: actions/upload-artifact@v4
-          with:
-            name: temp-data
-            path: data.txt
-            retention-days: 3
+        with:
+           name: temp-data
+          path: data.txt
+          retention-days: 3
 
       
       
