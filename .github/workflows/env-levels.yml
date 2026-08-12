@@ -1,0 +1,18 @@
+name: Переменные окружения уровня job и step
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      MY_VAR: "job-level"
+    steps:
+      - name: шаг со своей переменной
+        env:
+          MY_VAR: "step-level"
+        run: echo "MY_VAR=$MY_VAR"
+
+      - name: шаг без своей переменной
+        run: echo "MY_VAR=$MY_VAR"
