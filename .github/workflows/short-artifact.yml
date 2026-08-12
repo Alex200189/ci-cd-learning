@@ -1,0 +1,20 @@
+name: Артефакт с коротким сроком хранения
+
+on:
+  push:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: создание файла
+        run: echo "date" > data.txt
+      - name: загрузка файла
+        uses: actions/upload-artifact@v4
+          with:
+            name: temp-data
+            path: data.txt
+            retention-days: 3
+
+      
+      
