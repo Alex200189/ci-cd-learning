@@ -30,7 +30,7 @@ jobs:
     needs: test
     steps:
       - run: |
-         mkdir -p test
+         mkdir -p dist
          echo "test" > dist/app.js
       - name: загружаем как артефакт
         uses: actions/upload-artifact@v4
