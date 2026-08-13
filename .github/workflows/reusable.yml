@@ -1,0 +1,24 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+      run-tests:
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+      - run: echo "Node.js ${{ inputs.node-version }} установлен"
+      - if: inputs.run-tests
+        run: echo "Тесты запущены"
